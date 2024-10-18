@@ -26,24 +26,24 @@ if __name__ == '__main__':
     only_test = True  # 是否仅在测试集上测试模型性能
     # 获取数据加载器
     image_size = 224 if not use_cnn else 32
-    # trainloader, testloader = get_dataloader(batch_size, image_size)
-    trainloader, testloader = get_augmented_dataloader(batch_size, image_size)
+    trainloader, testloader = get_dataloader(batch_size, image_size)
+    # trainloader, testloader = get_augmented_dataloader(batch_size, image_size)
     # CIFAR-10的类别标签
     classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
     if use_cnn:
         model = CNN().to(device)
         # model_path = './' + cnn_model_path + '.pth'
-        model_path = './model/cnn_adam.pth'
-        loss_path = './' + cnn_model_path + '_loss.png'
-        cm_path = './' + cnn_model_path + '_confusion_matrix.png'
+        model_path = './model/cnn_augmented.pth'
+        loss_path = './picture/' + cnn_model_path + '_loss.png'
+        cm_path = './picture/' + cnn_model_path + '_confusion_matrix.png'
 
     else:
         model = get_resnet50().to(device)
-        model_path = './' + resnet_model_path + '.pth'
-        # model_path = './model/resnet_60epochs.pth'
-        loss_path = './' + resnet_model_path + '_loss.png'
-        cm_path = './' + resnet_model_path + '_confusion_matrix.png'
+        # model_path = './' + resnet_model_path + '.pth'
+        model_path = './model/resnet_18epochs.pth'
+        loss_path = './picture/' + resnet_model_path + '_loss.png'
+        cm_path = './picture/' + resnet_model_path + '_confusion_matrix.png'
 
     # 损失函数和优化器
     criterion = nn.CrossEntropyLoss()
