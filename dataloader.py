@@ -95,8 +95,8 @@ def imshow(img):
 
 
 if __name__ == '__main__':
-    trainloader, testloader = get_dataloader(4, 224)
-    # trainloader, testloader = get_augmented_dataloader(4, 224)
+    # trainloader, testloader = get_dataloader(4, 224)
+    trainloader, testloader = get_augmented_dataloader(4, 224)
     # CIFAR-10的类别标签
     classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
     # 从数据集中获取一个 batch 的样本
